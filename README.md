@@ -2,73 +2,28 @@
 
 
 ## Case - Group Project for Semester 3
-The process in a restaurant is usually the same. Customers get seated, are hand over the menu, order drinks and food, consume the drinks and food and finally have dessert. A restaurant has a new idea to convert the above process to a digital experience. You will be developing the requested proof of concept in an agile fashion. Initially you'll focus on the MVP (the most important features) and then continue to flesh out the application. 
+The main goal of our team is to deploy a web app (Digital Menu) which can basically help every restaurant optimize its work flow and efficiency. Once a customer takes a seat in the restaurant, he/she will scan a QR code with his mobile phone. The customer is redirected to the menu of the restaurant where he can not only see the menu, but also to make an order. Another main goal in the project is splitting it into independent microservices which will communicate between each other.
+The app would generally include the following: 
+• Client app 
+• Kitchen app 
+• Admin panel app 
+Client app is used by the customer. A customer can select products and after checkout the order is sent to the kitchen. Kitchen app will be designed so that the cooks can see all the orders they have to prepare for the customers. Admin panel is structured so it can modify existing records (like menu items) in the included microservices 
 
-## Setup
-### Default ports
-#### Backend
-* 8080: api-gateway
+
+## Used technologies
+
+#### Backend - Java Springboot & PodtgreSQL
+* 8080: API - gateway
 * 8081: Restaurant service
 * 8082: Menu service
 * 8083: Order service
 * 8084: QR service
+* 8085: Auth service
+* 8086: Inventory service
 * 8761: Discovery server
 * 5432: PostgreSQL
 
-#### Frontend
+#### Frontend - React & Material UI
 * 3001: Restaurant
 * 3002: Kitchen
-
-### Mappings
-#### Backend
-QR service:
-* POST: `/api/qr-codes/`
-
-Restaurant Service:
-* GET: `/api/restaurants/`
-* GET: `/api/restaurants/{id}`
-* POST: `/api/restaurants/`
-* DELETE: `/api/restaurants/{id}`
-* PUT: `/api/restaurants/`
-
-Menu Service:
-* GET: `/api/menus/`
-* GET: `/api/menus/{id}`
-* POST: `/api/menus/`
-* DELETE: `/api/menus/{id}`
-* PUT: `/api/menus/`
-
-### PostgreSQL
-#### Windows
-Go to [PostgreSQL website](https://www.postgresql.org/), download and install the `.exe`.
-
-#### MacOS
-##### Install
-Install PostgreSQL using brew and start it as service.
-``` 
-brew update
-brew install postgresql
-brew services start postgresql
-```
-Next, create a database.
-```
-initdb /usr/local/var/postgres -E utf8
-```
-Then, access it through
-```
-psql -h localhost -d postgres
-```
-##### Remove
-To remove PostgreSQL from your machine.
-```
-sudo /Library/PostgreSQL/<version>/uninstall-postgresql.app/Contents/MacOS/uninstall-postgresql
-```
-Make sure to also remove Postgres as user in System Preferences. The user should be under Users & Groups.
-
-#### Setup
-After having installed PostgreSQL, add the following to `application.properties`.
-```
-spring.datasource.url=jdbc:postgresql://localhost:5432/postgres
-spring.datasource.username=postgres
-spring.datasource.password=admin
-```
+* 3003: Admin Panel
