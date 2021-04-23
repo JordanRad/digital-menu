@@ -12,7 +12,7 @@ Client app is used by the customer. A customer can select products and after che
 
 ## Used technologies
 
-#### Backend - Java Springboot & PodtgreSQL
+#### Backend - Java Springboot & PostgreSQL
 * 8080: API - gateway
 * 8081: Restaurant service
 * 8082: Menu service
